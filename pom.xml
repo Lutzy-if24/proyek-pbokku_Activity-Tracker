@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>4.0.0-RC2</version> <!-- Pastikan versi ini benar compatible dengan JDK 25 -->
+		<version>4.0.0-RC2</version>
 		<relativePath />
 	</parent>
 
@@ -86,7 +86,6 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!-- Cukup satu deklarasi spring-boot-starter-test -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -125,8 +124,6 @@
 			<scope>provided</scope>
 		</dependency>
 
-		<!-- Bagian duplikat spring-boot-starter-test sudah dihapus dari sini -->
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -136,6 +133,13 @@
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<scope>runtime</scope>
+		</dependency>
+
+		<!-- H2 DATABASE (PERHATIKAN SCOPE-NYA) -->
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope> <!-- Ubah dari 'test' ke 'runtime' -->
 		</dependency>
 
 		<dependency>
@@ -161,7 +165,6 @@
 
 	<build>
 		<plugins>
-			<!-- Plugin Compiler: PENTING UNTUK LOMBOK -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
