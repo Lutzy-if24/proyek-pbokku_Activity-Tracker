@@ -6,8 +6,17 @@ class ApplicationTest {
 
     @Test
     void testMain() {
-        // Memanggil method main secara manual agar baris SpringApplication.run() ter-cover
-        // Kita mengirim array string kosong sebagai argumen
-        Application.main(new String[] {});
+        // KITA UBAH DISINI:
+        // Jangan kirim array kosong. Kita kirim settingan H2 sebagai argumen.
+        // Ini akan menimpa settingan PostgreSQL yang ada di application.properties utama.
+        Application.main(new String[] {
+            "--spring.datasource.url=jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE",
+            "--spring.datasource.driverClassName=org.h2.Driver",
+            "--spring.datasource.username=sa",
+            "--spring.datasource.password=",
+            "--spring.jpa.database-platform=org.hibernate.dialect.H2Dialect",
+            "--spring.jpa.hibernate.ddl-auto=create-drop",
+            "--spring.sql.init.mode=never"
+        });
     }
 }
