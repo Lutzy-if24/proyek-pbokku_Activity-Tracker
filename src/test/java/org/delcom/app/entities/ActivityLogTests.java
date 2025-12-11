@@ -19,6 +19,7 @@ class ActivityLogTests {
         String proofImage = "bukti.jpg";
 
         // 2. Act
+        
         log.setId(id);
         log.setUserId(userId);
         log.setSteps(5000);
